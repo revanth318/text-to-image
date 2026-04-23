@@ -21,7 +21,8 @@ def load_pipeline():
     pipe.fuse_lora()
     pipe.enable_model_cpu_offload()
     pipe.enable_attention_slicing()
-    return pipe.to(device)
+    pipe.to("cpu")
+    return pipe
 pipeline = load_pipeline()
 with st.sidebar:
     num_steps=st.slider("Number of steps",2,4,8)
