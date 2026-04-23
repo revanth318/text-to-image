@@ -19,6 +19,8 @@ def load_pipeline():
     pipe.scheduler=LCMScheduler.from_config(pipe.scheduler.config)
     pipe.safety_checks=None
     pipe.fuse_lora()
+    pipe.enable_model_cpu_offload()
+    pipe.enable_attention_slicing()
     return pipe.to(device)
 pipeline = load_pipeline()
 with st.sidebar:
