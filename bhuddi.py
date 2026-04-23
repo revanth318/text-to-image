@@ -2,7 +2,8 @@ import os
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 
 
-import streamlit as st,torch
+import streamlit as st
+import torch
 from diffusers import StableDiffusionPipeline,LCMScheduler
 @st.cache_resource
 def load_pipeline():
