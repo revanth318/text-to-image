@@ -1,7 +1,7 @@
 streamlit
 torch
-diffusers
-accelerate
+diffusers>=0.26.0
+accelerate>=4.36.0
 transformers
 safetensors
 peft
