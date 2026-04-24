@@ -7,21 +7,17 @@ import torch
 from diffusers import StableDiffusionPipeline,LCMScheduler
 @st.cache_resource
 def load_pipeline():
-    device="cuda" if torch.cuda.is_available() else "cpu"
-    model_id="runwayml/stable-diffusion-v1-5"
-    #bnb_config=BitsAndBytesConfig(load_in8bit=True)
-    dtype=torch.float16 if device=="cuda" else torch.float32
-    pipe = StableDiffusionPipeline.from_pretrained(model_id,
-                                                   torch_dtype=dtype)
-                                                  # device_map="auto",
-                                                  # quantization_config=bnb_config,)
-    pipe.load_lora_weights("latent-consistency/lcm-lora-sdv1-5")
+    pipe=StableDiffusionPipeline.from_pretrained(
+        "runwayml/stable-diffusion-v1-5",
+        torch_dtype=torch.float16,
+        variant="fp16")
     pipe.scheduler=LCMScheduler.from_config(pipe.scheduler.config)
-    pipe.safety_checks=None
-    pipe.fuse_lora()
-    pipe.enable_model_cpu_offload()
-    pipe.enable_attention_slicing()
-    pipe.to("cpu")
+    pipe.load_lora_weights("latent-consistency/lcm-lora-sdv1-5")
+    #pipe.fuse_lora()
+    pipe.enable_sequential_cpu_offload()
+    pipe.enable_attention_slicing("max")
+    pipe.enable_vae_slicing()
+    
     return pipe
 pipeline = load_pipeline()
 with st.sidebar:
