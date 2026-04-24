@@ -5,6 +5,7 @@ os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 import streamlit as st
 import torch
 from diffusers import StableDiffusionPipeline,LCMScheduler
+from PIL import Image
 @st.cache_resource
 def load_pipeline():
     pipe=StableDiffusionPipeline.from_pretrained(
