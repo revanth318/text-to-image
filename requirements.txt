@@ -1,8 +1,8 @@
 streamlit
 torch
 diffusers
-transformers
 accelerate
+transformers
 safetensors
 peft
 torchvision
