@@ -7,3 +7,5 @@ safetensors
 peft==0.10.0
 torchvision
 huggingface-hub==0.23.2
+numpy==1.26.4
+pillow
