@@ -37,8 +37,6 @@ if st.button("Generate"):
         negative_prompt,
         num_inference_steps=num_steps,
         guidance_scale=guidance_scale,
-        height=256,
-        width=256
         ).images[0]
     st.image(img)
 
