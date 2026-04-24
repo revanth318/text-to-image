@@ -14,7 +14,7 @@ def load_pipeline():
     pipe.scheduler=LCMScheduler.from_config(pipe.scheduler.config)
     pipe.load_lora_weights("latent-consistency/lcm-lora-sdv1-5")
     #pipe.fuse_lora()
-    pipe.enable_sequential_cpu_offload()
+    pipe.enable_model_cpu_offload()
     pipe.enable_attention_slicing("max")
     pipe.enable_vae_slicing()
     
