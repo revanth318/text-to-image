@@ -25,8 +25,8 @@ def load_pipeline():
     return pipe
 pipeline = load_pipeline()
 with st.sidebar:
-    num_steps=st.slider("Number of steps",2,4,8)
-    guidance_scale=st.slider("GUIDANCE SCALE",1,2,3)
+    num_steps=st.slider("Number of steps",4)
+    guidance_scale=st.slider("GUIDANCE SCALE",1)
 
 prompt=st.text_input("Prompt","masterpiece,ultra detailed,cinematic lighting 8k")
 negative_prompt="blurry,low quality"
