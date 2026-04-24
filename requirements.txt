@@ -1,8 +1,8 @@
 streamlit
-torch
-diffusers>=0.26.0
-accelerate>=4.36.0
-transformers
+torch==2.2.2
+diffusers==0.27.2
+accelerate==0.29.3
+transformers==4.41.2
 safetensors
-peft
+peft==0.10.0
 torchvision
