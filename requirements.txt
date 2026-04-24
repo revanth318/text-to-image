@@ -1,10 +1,10 @@
 streamlit
-torch==2.2.2
-diffusers==0.27.2
-accelerate==0.29.3
-transformers==4.41.2
+torch
+diffusers
+accelerate
+transformers
 safetensors
-peft==0.10.0
-huggingface-hub==0.23.2
-numpy==1.26.4
+peft
+huggingface-hub
+numpy
 pillow
