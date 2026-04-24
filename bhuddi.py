@@ -11,13 +11,15 @@ def load_pipeline():
         "runwayml/stable-diffusion-v1-5",
         torch_dtype=torch.float16,
         variant="fp16",
-    low_cpu_mem_usage=True)
+    low_cpu_mem_usage=True,
+    use_safetensors=True)
     pipe.scheduler=LCMScheduler.from_config(pipe.scheduler.config)
     pipe.load_lora_weights("latent-consistency/lcm-lora-sdv1-5")
     #pipe.fuse_lora()
     #pipe.enable_model_cpu_offload()
     pipe.enable_attention_slicing("max")
     pipe.enable_vae_slicing()
+    pipe.enable_vae_tilling()
     pipe.unet.to(memory_format=torch.channels_last)
     
     return pipe
@@ -34,6 +36,8 @@ if st.button("Generate"):
         negative_prompt,
         num_inference_steps=num_steps,
         guidance_scale=guidance_scale,
+        height=256,
+        width=256
         ).images[0]
     st.image(img)
 
