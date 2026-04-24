@@ -19,7 +19,7 @@ def load_pipeline():
     #pipe.enable_model_cpu_offload()
     pipe.enable_attention_slicing("max")
     pipe.enable_vae_slicing()
-    pipe.enable_vae_tilling()
+    pipe.enable_vae_tiling()
     pipe.unet.to(memory_format=torch.channels_last)
     
     return pipe
